@@ -1,0 +1,6 @@
+.add-course:hover{
+    border: 1px solid transparent;
+    background: green;
+    transition: .3s;
+    color: #fff;
+}
