@@ -1,11 +1,11 @@
 import './onlineCourses.css'
-import teacher from '../../assets/medium-shot-man-reading-home_23-2149879774.jpg'
+import teacher from '../../assets/128803696-intelligent-guy-studying-in-school-library-using-laptop-and-searching-for-information-on-internet.jpg'
 import { useNavigate } from 'react-router-dom';
 
 function OnlineCourses() {
 
   const isRegistered = () => {
-    return localStorage.getItem('user') ? true : false;
+    return localStorage.getItem('knoz-user') ? true : false;
   }
   const navigate = useNavigate();
 
@@ -13,7 +13,7 @@ function OnlineCourses() {
     <div className="OnlineCourses-section">
       <div className="left-side">
         <h1>
-          The best way to learn <br /> online courses
+          The best way to learn online courses
         </h1>
         <p>
           in this world engage, challenge and support in off <br /> for quizzes

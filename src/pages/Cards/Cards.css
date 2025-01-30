@@ -14,7 +14,7 @@
     display: flex;
     gap: 20px;
     align-self: center;
-    margin-top: 40px;
+    margin-top: 0px;
 }
 .courses-section .courses-titles .course-btn{
     padding: 8px 10px;

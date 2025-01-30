@@ -5,13 +5,16 @@ import axios from 'axios';
 import * as yup from 'yup'
 import { useState,useEffect } from 'react';
 import { Formik } from 'formik';
+import { useCourses } from '../../context/CoursesContext';
+
 function Login() {
 
   const navigate = useNavigate()
   const [error,setError] = useState('');
+  const {admin,setAdmin} = useCourses();
 
   const isRegistered = () => {
-    return localStorage.getItem('knoz-student-token') ? true : false;
+    return localStorage.getItem('knoz-user') ? true : false;
   }
 
   useEffect(() => {
@@ -32,7 +35,10 @@ function Login() {
     try {
       await axios.post('/account/login' , values).then((res) =>{
         localStorage.setItem('knoz-user',JSON.stringify(res.data))
-        res.status == 200 ? navigate('/') : setError(res.message)
+        if(res.status == 200) { 
+          res.data.user.email == "admin@gmail.com" || res.data.user.email == "bigBoss@gmail.com" ? setAdmin(true) : null;
+           navigate('/') 
+          } else setError(res.message)
         // console.log(error);
       })
     } catch (error) {

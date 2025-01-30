@@ -12,10 +12,12 @@ import ContsctUs from './pages/Contact us/ContactUs';
 import { CoursesProvider } from './context/CoursesContext';
 import Search from './pages/search/Search';
 import Video from './pages/Video/Video'
+import KidsCourses from './pages/kidscourses/KidsCourses';
 
 function App() {
 
-  axios.defaults.baseURL = 'https://knoz-academy-server-1.onrender.com'
+  axios.defaults.baseURL = 'http://localhost:3000'
+  // axios.defaults.baseURL = "http://192.168.100.216:3000";
 
   return (
     <>
@@ -28,6 +30,7 @@ function App() {
           <Route path='/contact' element={<ContsctUs />} />
           <Route path='/profile' element={<Profile />} />
           <Route path='/search' element={<Search />} />
+          <Route path='/kidsCourses' element={<KidsCourses />} />
           <Route path='/courses/:id' element={<CoursePage />} />
           <Route path='/courses/:id/videos' element={<Video />} />
         </Route>

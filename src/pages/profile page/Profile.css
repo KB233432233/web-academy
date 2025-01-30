@@ -133,6 +133,47 @@
 
 
 @media(max-width: 500px) {
+
+.profile-page-container{
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    padding: 0px;
+    align-items: center;
+}
+  .profile-page-container .profile-page-upper-side{
+    width: 100%;
+    display: flex;
+    padding: 10px;
+
+  }
+  .profile-page-container .profile-page-upper-side .user-avatar{
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+  }
+  .profile-page-container .profile-page-upper-side .user-info .user-name{
+    font-size: 14px;
+  } 
+  .profile-page-container .profile-page-upper-side .user-info .student-info-email .user-type{
+    font-size: 12px;
+  }
+  .profile-page-container .profile-page-upper-side .user-info .student-info-email .user-email{
+    font-size: 12px;
+  }
+   .profile-page-container .profile-page-bottom-side {
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+    width: 100%;
+    padding: 20px;
+  }
+  .profile-page-bottom-side .user-porfile-btn{
+    width: 100%;
+  }
+   .profile-page-bottom-side .user-porfile-btn button {
+        font-size: 11px;
+   }
     .profile-page-container .about-me-section {
         width: 100vw;
         align-self: center;
@@ -174,3 +215,17 @@
     background: transparent;
     color: #fff;
 }
+
+.profile-page-container .about-me-section .card {
+    display: none;
+}
+
+
+/* .profile-page-container .enrolled-courses-section {
+    width: 100%;
+    display: flex;
+    gap: 15px;
+    margin-top: 40px;
+    justify-content: center;
+    flex-wrap: wrap;
+} */

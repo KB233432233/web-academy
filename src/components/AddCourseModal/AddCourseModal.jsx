@@ -167,7 +167,7 @@ import axios from "axios"
 import { IoMdClose } from "react-icons/io";
 import './AddCourseModal.css'
 
-function AddCourseModal() {
+function AddCourseModal({kids}) {
   
   const [values,setValues] = useState({
     course_name: '',
@@ -206,9 +206,11 @@ function AddCourseModal() {
   data.append("course_price",values.course_price);
   data.append("category",values.category);
   data.append("course_img",values.course_img);
-  data.append("cousre_description",values.cousre_description)
+  data.append("course_description", values.cousre_description);
+  kids ? data.append("kidsCourses", true) : data.append("kidsCourses",false)
 
     const token = JSON.parse(localStorage.getItem("knoz-user")).token;
+
                try {
                 await axios.post('/courses/create-course', data , { headers : {
                Authorization : token

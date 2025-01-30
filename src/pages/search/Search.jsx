@@ -2,6 +2,7 @@ import {useEffect} from 'react'
 import { useCourses } from '../../context/CoursesContext'
 import CourseCard from '../course card/CourseCard'
 import '../Cards/Cards.css'
+import img from '../../assets/courseDefault.jpg'
 
 export default function Search() {
 
@@ -15,7 +16,7 @@ export default function Search() {
     <div className='courses-cards'>
         {course == 'no courses found' ? course :
       <CourseCard 
-      photo={course.course_img ? course.course_img : null} 
+      photo={course.course_img ? course.course_img : img} 
       duration={course.course_duration} 
       price={course.course_price} 
       navigateTo={course._id}

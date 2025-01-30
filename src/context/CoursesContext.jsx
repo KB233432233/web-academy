@@ -17,16 +17,28 @@ export const CoursesProvider = ({children}) => {
   const [skeleton ,setSkeleton] = useState(false)
   const [addSkillsModal , setAddSkillsModal]= useState(false)
   const [course,setCourse] = useState('nothing to show');
+  const [admin,setAdmin] = useState(false);
+  const [enroll,setEnroll] = useState(false);
 
+  useEffect(() => {
+    fetchd();
+    if(JSON.parse(localStorage.getItem('knoz-user')))
+      JSON.parse(localStorage.getItem('knoz-user')).user.email == "admin@gmail.com" || JSON.parse(localStorage.getItem('knoz-user')).user.email == "bigBoss@gmail.com" ? setAdmin(true) : setAdmin(false)
+    // const courses2 = JSON.parse(sessionStorage.getItem('courses'));
+    // const userCourses = JSON.parse(localStorage.getItem('knoz-user')).user.courses;
+    //  userCourses.length ? courses2.map(e => {
+    //  const course = userCourses.filter(c => c == e._id)
+    //  if(course[0] == e._id)  e.isEnrolled = true
+    // }) : null
+    // sessionStorage.setItem('courses',JSON.stringify(courses))
+    // setCourses(courses2)
+  },[])
     async function fetchd () {
         const courses = await axios.get('/courses');
         setCourses(courses.data)
         sessionStorage.setItem('courses',JSON.stringify(courses.data));
       }
       
-      useEffect(() => {
-        fetchd();
-      },[])
 
 
       const filterCourses = (id) => {
@@ -50,7 +62,7 @@ export const CoursesProvider = ({children}) => {
       const coursesPerCategory = [];
       var obj = {}
       set.forEach(e => {
-        obj[e] = courses.filter(el => e == el.category);
+        obj[e] = arr.filter(el => e == el.category);
         coursesPerCategory.push(obj);
         obj = {}
       })
@@ -70,6 +82,11 @@ export const CoursesProvider = ({children}) => {
 
     return <coursesContext.Provider value={{
       filterCourses,
+      setCourses,
+      enroll,
+      setEnroll,
+      admin,
+      setAdmin,
       courses,
       courseVideos,
       selectedCourse,

@@ -8,7 +8,7 @@ function Modal() {
   const { setEditModal, editModal } = useCourses();
 
   const handleSubmit = async (e) => {
-    const token = JSON.parse(localStorage.getItem('knoz-student-token')).token
+    const token = JSON.parse(localStorage.getItem('knoz-user')).token
     e.preventDefault();
     const data = new FormData()
     data.append('name',values.username);
@@ -19,7 +19,7 @@ function Modal() {
       const res = await axios.post('/account/profile/update',data,{headers: {
         Authorization: token
       }})
-      location.reload()
+      setEditModal(false)
     } catch (error) {
       console.log(error);
     }
@@ -28,23 +28,36 @@ function Modal() {
   const [values,setValues] = useState({
     username: '',
     about: '',
-    avatar: {}
+    avatar: ''
   })
 
   return (
     <div className="modal-container">
       <div className="modal-body">
-        <button className='close-modal-btn' onClick={() => setEditModal(false)}>x</button>
-        <label htmlFor="profilePic">
-            <img src={default_avatar} alt="" />
+        <label htmlFor="profilePic" className="profilePic">
+          <img src={default_avatar} alt="" />
         </label>
-        <input type="file" id='profilePic' onChange={e => setValues({...values,avatar: e.target.files[0]})}/>
+        <input
+          type="file"
+          id="profilePic"
+          onChange={(e) => setValues({ ...values, avatar: e.target.files[0] })}
+        />
         <form onSubmit={handleSubmit}>
-          <input type="text" placeholder='New Username' value={values.username}
-          onChange={e => setValues({...values,username: e.target.value})}/>
-          <textarea placeholder='About Me' value={values.about}
-          onChange={e => setValues({...values,about: e.target.value})}/>     
-          <button className='save-btn'>Save</button>
+          <input
+            type="text"
+            placeholder="New Username"
+            value={values.username}
+            onChange={(e) => setValues({ ...values, username: e.target.value })}
+          />
+          <input
+            placeholder="About Me"
+            value={values.about}
+            onChange={(e) => setValues({ ...values, about: e.target.value })}
+          />
+          <button className="save-btn">Save</button>
+          <button className="close-btn" onClick={() => setEditModal(false)}>
+            Close
+          </button>
         </form>
       </div>
     </div>

@@ -73,3 +73,7 @@ padding: 10px;
  .video-details strong{
     color: rgb(20, 20, 189);
 }
+
+.video-details {
+    overflow-x: hidden;
+}

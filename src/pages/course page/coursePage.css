@@ -56,25 +56,40 @@
     border-radius: 10px;
     /* background: #ebf2ff; */
   }
+    .course-page-container .course-page-upper-section .right-side .up {
+      width: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
 
-  .course-page-container .course-page-upper-section .right-side .open-add-video {
+  .course-page-container .course-page-upper-section .right-side .up .open-add-video {
     background-color: transparent;
-    border: 1px solid blue;
-    border-radius: 10px;
+    width: 40%;
+    height: 35px;
+    border: 1px solid rgb(226, 226, 255);
+    border-radius: 4px;
     cursor: pointer;
     padding: 5px;
+    font-size: 12px;
+    color: #2b447c;
     transition: 0.3s;
   }
 
   .course-page-container .course-page-upper-section .right-side .open-add-video:hover {
-    background-color: blue;
+    background-color: #4765a3;
+    border: 1px solid transparent;
     color: white;
     transition: 0.3s;
+  }
+  .p p{
+    color: #2b447c;
+    font-size: 16px;
   }
 
   .course-page-container .course-page-upper-section .right-side strong {
     background-color: transparent;
-    color: #5f8def;
+    color: #315092;
   }
   .course-page-container .course-page-upper-section .right-side p {
     background-color: transparent;
@@ -164,8 +179,117 @@
     border-radius: 5px;
   }
   .no-videos-text p {
-    font-size: 18px;
+    font-size: 12px;
     color: #5f8def;
     background: transparent;
   }
   
+ .enroll-btn {
+  border-radius: 6px;
+  border: 1px solid #cdd9f3;
+  outline: none;
+  background-color: transparent;
+  cursor: pointer;
+  transition: .3s;
+  position: relative;
+  height: 60px;
+  width: 80%;
+  justify-self: center;
+  align-self: center;
+  }
+
+  .enroll-btn::after {
+    content: '';
+    width: 0;
+    height: 100%;
+    background-color: #2b447c;
+    transition: 0.3s;
+    position: absolute;
+    top: 0;
+    left: 0;
+    border-radius: 5px;
+    color: white;
+  }
+
+  
+  .enroll-btn:hover::after {
+    display: block;
+    width: 100%;
+    transition: 0.5s;
+    z-index: -1;
+  }
+  
+  .enroll-btn:hover {
+    color: white;
+    transition: .3s;
+  }
+@media screen and (max-width : 420px) {
+  .course-page-container .course-page-upper-section .right-side{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+  }
+
+  .course-page-container .course-page-upper-section .right-side .up {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+  }
+  .course-page-container .course-page-upper-section .right-side .up .the-course-desc {
+    text-align: center;
+  }
+    .course-page-container .course-page-upper-section .right-side .up .open-add-video {
+      width: 45%;
+    }
+  .the-course-desc{
+    font-size: 13px;
+  }
+  .course-page-container .course-page-upper-section .right-side strong{
+      font-size: 13px;
+    }
+  .p p {
+    font-size: 12px;
+  }
+  .enroll-btn {
+  border-radius: 6px;
+  border: 1px solid #cdd9f3;
+  outline: none;
+  background-color: transparent;
+  cursor: pointer;
+  transition: .3s;
+  position: relative;
+  height: 57px;
+  width: 100%;
+  justify-self: center;
+  align-self: center;
+  }
+
+  .enroll-btn::after {
+    content: '';
+    width: 0;
+    height: 100%;
+    background-color: #2b447c;
+    transition: 0.3s;
+    position: absolute;
+    top: 0;
+    left: 0;
+    border-radius: 5px;
+    color: white;
+  }
+
+  
+  .enroll-btn:hover::after {
+    display: block;
+    width: 100%;
+    transition: 0.5s;
+    z-index: -1;
+  }
+  
+  .enroll-btn:hover {
+    color: white;
+    transition: .3s;
+  }
+}

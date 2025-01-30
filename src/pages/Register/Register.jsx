@@ -9,7 +9,7 @@ function Register() {
     const [error,setError] = useState('');
 
     const isRegistered = () => {
-      return localStorage.getItem('knoz-student-token') ? true : false;
+      return localStorage.getItem('knoz-user') ? true : false;
     }
   
     useEffect(() => {
@@ -33,7 +33,8 @@ function Register() {
       
         try {
             const res = await axios.post("account/register", values)
-            localStorage.setItem('knoz-student-token',JSON.stringify(res.data))
+            localStorage.setItem('knoz-user',JSON.stringify(res.data))
+          //  JSON.parse(localStorage.getItem('knoz-user')).user.email == "admin@gmail.com" || JSON.parse(localStorage.getItem('knoz-user')).user.email == "bigBoss@gmail.com" ? setAdmin(true) : setAdmin(false);
                 navigate("/");
               }
          catch (error) {

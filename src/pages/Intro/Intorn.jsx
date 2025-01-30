@@ -12,7 +12,7 @@ function Intorn() {
  const [search_word,setSearch_word] = useState('');
 
  const handleSearch = () => {
-    const course = courses.find((e) => e.course_name == search_word)
+    const course = courses.find((e) => e.course_name.toLowerCase() == search_word.toLowerCase())
     course ?  setCourse(course) : setCourse('no courses found')
     navigate(`/search`);
  }

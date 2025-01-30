@@ -24,6 +24,7 @@
 
 .OnlineCourses-section .left-side h1 {
     color: #0F2A65;
+    font-size: 25px;
 }
 .OnlineCourses-section .left-side p{
     font-size: 14px;
@@ -53,11 +54,44 @@
     width: 100%;
 }
 .OnlineCourses-section .right-side img{
-    width: 50%;
+    width: 100%;
     border-radius: 5px;
 }
 
 @media(max-width: 768px) {
+    .OnlineCourses-section {
+        display: flex;
+        flex-direction: column;
+    }
+    
+    .OnlineCourses-section .left-side p{
+        font-size: 12px;
+        text-align: center;
+        color: #3f6386;
+}
+    .OnlineCourses-section  {
+        padding: 50px;
+    }
+    .OnlineCourses-section .left-side {
+        align-items: center;
+    }
+    .OnlineCourses-section .left-side h1 {
+        font-size: 12px;
+    }
+    .OnlineCourses-section .right-side {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+    .OnlineCourses-section .right-side img {
+        width: 100%;
+    }
+}
+ /* @media(max-width: 420px) {
+    .OnlineCourses-section .left-side p{
+    font-size: 14px;
+    color: #3f6386;
+}
     .OnlineCourses-section  {
         padding: 50px;
     }
@@ -74,4 +108,4 @@
         width: 60%;
         margin-left: 13%;
     }
-}
+} */

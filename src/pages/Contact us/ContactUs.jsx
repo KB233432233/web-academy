@@ -45,37 +45,58 @@ function ContactUs() {
       <div className="right-side">
         <p>HAVE SOME QUESTIONE ?</p>
         <form ref={form} onSubmit={sendEmail}>
-          <input type="text" placeholder="name" name="user_name" 
-          value={values.name}
-          onChange={(e) => setValues({...values,name: e.target.value})}
+          <input
+            type="text"
+            placeholder="name"
+            name="user_name"
+            value={values.name}
+            onChange={(e) => setValues({ ...values, name: e.target.value })}
           />
           {/* <input type="text" placeholder="Last Name" /> */}
-          <input type="email" placeholder="Your Email" name="user_email"
-          value={values.email}
-          onChange={e => setValues({...values,email: e.target.value})}
+          <input
+            type="email"
+            placeholder="Your Email"
+            name="user_email"
+            value={values.email}
+            onChange={(e) => setValues({ ...values, email: e.target.value })}
           />
-          <input type="text" placeholder="Your message" name="message"
-           value={values.message}
-           onChange={e => setValues({...values,message: e.target.value})}
+          <input
+            type="text"
+            placeholder="Your message"
+            name="message"
+            value={values.message}
+            onChange={(e) => setValues({ ...values, message: e.target.value })}
           />
-          <button value={'send'}>Send Message</button>
+          <button value={"send"}>Send Message</button>
         </form>
         <div className="social-media-accounts">
-          <SiWhatsapp
-            color="rgb(88, 88, 230"
-            size={30}
-            className="social-media-accounts-icon"
-          />
-          <FaFacebook
-            color="rgb(88, 88, 230"
-            size={30}
-            className="social-media-accounts-icon"
-          />
-          <FaInstagram
-            color="rgb(88, 88, 230"
-            size={30}
-            className="social-media-accounts-icon"
-          />
+          <a
+            href="https://web.whatsapp.com/send?phone=+971585766358"
+            target="_blank"
+          >
+            <SiWhatsapp
+              color="rgb(88, 88, 230"
+              size={30}
+              className="social-media-accounts-icon"
+            />
+          </a>
+          <a
+            href="https://www.facebook.com/profile.php?id=61556308754814&mibextid=LQQJ4d"
+            target="_blank"
+          >
+            <FaFacebook
+              color="rgb(88, 88, 230"
+              size={30}
+              className="social-media-accounts-icon"
+            />
+          </a>
+          <a href="https://www.instagram.com/knoz_academy" target="_blank">
+            <FaInstagram
+              color="rgb(88, 88, 230"
+              size={30}
+              className="social-media-accounts-icon"
+            />
+          </a>
         </div>
       </div>
     </div>

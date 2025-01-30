@@ -17,7 +17,7 @@ function PageLayout() {
     });
     
     const isRegistered = () => {
-      return JSON.parse(localStorage.getItem('knoz-user')) ? true : false;
+      return localStorage.getItem('knoz-user') ? true : false;
     }
 
    function closeMenu () {
@@ -35,47 +35,65 @@ function PageLayout() {
             <img src={logo} alt="" className="logo" />
             <ul className="links">
               <li className="link">
-                <Link to={'/'}>Home</Link>
+                <Link to={"/"}>Home</Link>
               </li>
               <li className="link">
-                <Link to='/courses'>Courses</Link>
+                <Link to="/courses">Courses</Link>
               </li>
               <li className="link">
-                <Link>Kids-Courses</Link>
+                <Link to="/kidsCourses">Kids-Courses</Link>
               </li>
               <li className="link">
-                <Link to={'/contact'}>Contact-us</Link>
+                <Link to={"/contact"}>Contact-us</Link>
               </li>
-              <li className="link">
+              {/* <li className="link">
                 <Link>Language</Link>
-              </li>
+              </li> */}
             </ul>
           </div>
-          {
-            isRegistered() ? <FaCircleUser onClick={() => navigate('/profile')} className='profile-icon'/> :
-             <button className="login-btn" onClick={() => navigate('/account/login')}>Login</button>
-          }
+          {isRegistered() ? (
+            <FaCircleUser
+              onClick={() => navigate("/profile")}
+              className="profile-icon"
+              color="#2b447c"
+            />
+          ) : (
+            <button
+              className="login-btn"
+              onClick={() => navigate("/account/login")}
+            >
+              Login
+            </button>
+          )}
         </header>
       ) : (
         <header className="mob-screen">
           <img src={logo} alt="" className="logo" />
           <ul className="mob-screen-links">
             <li>
-              <Link to={'/'}>Home</Link>
+              <Link to={"/"}>Home</Link>
             </li>
             <li>
-              <Link to='/courses'>Courses</Link>
+              <Link to="/courses">Courses</Link>
             </li>
             <li>
-              <Link>Kids courses</Link>
+              <Link to={"/kidsCourses"}>Kids courses</Link>
             </li>
             <li>
-              <Link to={'/contact'}>Contact us</Link>
+              <Link to={"/contact"}>Contact us</Link>
             </li>
-            <li>
+            {/* <li>
               <Link>Language</Link>
-            </li>
-             {!isRegistered() ? <Link to={'/account/login'} className="login-btn">Login</Link> : <Link to={'/profile'} className="login-btn">Profile</Link>}
+            </li> */}
+            {!isRegistered() ? (
+              <Link to={"/account/login"} className="login-btn">
+                Login
+              </Link>
+            ) : (
+              <Link to={"/profile"} className="login-btn">
+                Profile
+              </Link>
+            )}
             <button className="close-mob-menu" onClick={closeMenu}>
               <IoMdClose size={18} color="gray" />
             </button>
@@ -86,7 +104,7 @@ function PageLayout() {
         </header>
       )}
       <Outlet />
-      </>
-    )}
+    </>
+  );}
 
 export default PageLayout

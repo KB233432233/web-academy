@@ -9,14 +9,16 @@ function AddSkillsModal() {
 
     const [addSkills , setAddSkills] = useState(null)
     const handleAddSkills = async (e) => {
+      e.preventDefault()
         const data = { 
             skills:addSkills
         }
-        const token = JSON.parse(localStorage.getItem('knoz-student-token')).token
+        const token = JSON.parse(localStorage.getItem('knoz-user')).token
         try {
             await axios.post('/account/profile/update-skills' , data , {headers : {
                 Authorization : token
             }})
+            setAddSkillsModal(false)
         } catch (error) {
             console.log(error);
         }

@@ -10,6 +10,11 @@ function AddCourseVideoModal({id}) {
 
 const {setOpenAddVideoModal} = useCourses()
 
+const [validation,setValidation] = useState({
+  name: false,
+  video: false,
+})
+
   const [data,setData] = useState({
     video_name: '',
     video_description: '',
@@ -19,9 +24,18 @@ const {setOpenAddVideoModal} = useCourses()
   const handleSubmit = async e => {
     e.preventDefault();
     const token = JSON.parse(localStorage.getItem('knoz-user')).token
+    if(!data.video_name) {
+      setValidation({...validation,name: true})
+      return
+    }
+    if(!data.video) {
+      setValidation({...validation,video:true})
+      return
+    }
+
     const formdata = new FormData();
     formdata.append('video_title',data.video_name);
-    formdata.append('description',data.video_description);
+    formdata.append("description", data.video_description);
     formdata.append('course_id', id);
     formdata.append('video_uri',data.video)
     try {
@@ -30,7 +44,7 @@ const {setOpenAddVideoModal} = useCourses()
       }})
       location.reload()
     } catch (error) {
-      
+      console.log(error);
     }
   }
 
@@ -39,25 +53,45 @@ const {setOpenAddVideoModal} = useCourses()
   } 
 
   return (
-    <div className='add-course-video-container'>
-      <div className="add-video-close-btn">
-              <IoMdClose onClick={handleCloseModal} />
-        </div>
-      <form onSubmit={handleSubmit}>
-        <input type="text" placeholder='video name'
-        onChange={e => setData({video_name: e.target.value})}
-        />
-        <input type="text" placeholder='video description'
-        onChange={e => setData({video_description: e.target.value})}
-        />
-      <label htmlFor="videos">Select video</label>
-        <input type="file" id='videos'
-        onChange={e => setData({video:e.target.files[0]})}
-        />
-        <button type='submit'>Add video</button>
-      </form>
+    <div className="add-course-video-modal">
+      <div className="add-course-video-container">
+        <form onSubmit={handleSubmit}>
+          {validation.name && (
+            <span className="validation-vid">Please fill out this field</span>
+          )}
+          <input
+            type="text"
+            placeholder="video name"
+            onChange={(e) => {
+              setData({ ...data, video_name: e.target.value });
+              setValidation({ ...validation, name: false });
+            }}
+          />
+          <input
+            type="text"
+            placeholder="video description"
+            onChange={(e) =>
+              setData({ ...data, video_description: e.target.value })
+            }
+          />
+          {validation.video && (
+            <span className="validation-vid">Please select a video file</span>
+          )}
+          <label htmlFor="videos">Select video</label>
+          <input
+            type="file"
+            id="videos"
+            onChange={(e) => {
+              setData({ ...data, video: e.target.files[0] });
+              setValidation({ ...validation, video: false });
+            }}
+          />
+          <button type="submit">Add video</button>
+          <button onClick={handleCloseModal}>Close</button>
+        </form>
+      </div>
     </div>
-  )
+  );
 }
 
 export default AddCourseVideoModal
