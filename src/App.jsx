@@ -16,7 +16,7 @@ import KidsCourses from './pages/kidscourses/KidsCourses';
 
 function App() {
 
-  axios.defaults.baseURL = 'http://localhost:3000'
+  axios.defaults.baseURL = 'https://knoz-academy-server-1.onrender.com'
   // axios.defaults.baseURL = "http://192.168.100.216:3000";
 
   return (

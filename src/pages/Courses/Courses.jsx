@@ -10,7 +10,9 @@ export default function Courses() {
 
   const {filterByCat,openAddCourseModal,setOpenAddCourseModal,admin,setCourses,enroll} = useCourses();
   
-  const coursesPerCategory = filterByCat(JSON.parse(sessionStorage.getItem('courses')).filter(e => e.kidsCourses == false))
+  const coursesPerCategory = JSON.parse(sessionStorage.getItem('courses')).length ?
+  filterByCat(JSON.parse(sessionStorage.getItem('courses')).filter(e => e.kidsCourses == false)) :
+  [];
   
 
   useEffect(() => {
